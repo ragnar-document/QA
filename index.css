@@ -1,0 +1,154 @@
+*{
+    font-family: 'Rubik', sans-serif;
+}
+html{
+    background: linear-gradient(to right, rgb(127, 127, 213), rgb(134, 168, 231), rgb(145, 234, 228));
+}
+.page-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    box-shadow: rgb(0, 0, 0, 0.4) 3px 3px 19px;
+    animation: spin 2s ;
+}
+
+@keyframes spin {
+  from{
+       transform: rotateY(540deg);
+    };
+    to {
+        transform: rotateY(100deg);
+  }
+}
+
+
+
+.page-hide-container {
+    display: none;
+    background-color: #fff;
+    width: 500px;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    box-shadow: rgb(0, 0, 0, 0.4) 3px 3px 19px;
+}
+
+.nohide {
+    display: block !important;
+    background-color: #fff;
+}
+
+.hide-title {
+    color: #636e72;
+    font-size: 30px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.page-container-question {
+    flex: 1;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.page-container-question .title {
+    margin: 20px auto;
+    text-align: center;
+    font-size: 24px;
+}
+.page-container-question .questions{
+    margin-top: 40px;
+}
+.page-container-question .question {
+    line-height: 40px;
+    width: 80%;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid #000;
+    
+}
+
+.page-container-btn {
+    width: 80%;
+    height: 60px;
+    margin: 30px auto;
+}
+
+.page-container-btn a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: blueviolet;
+    color: aliceblue;
+    line-height: 40px;
+    width: 100px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.page-container-btn a:first-child {
+    float: left;
+}
+
+.page-container-btn a:last-child {
+    float: right;
+}
+
+#btnbody {
+    display: inline-block;
+}
+
+.green {
+    background-color: #55efc4;
+    color: #fff;
+}
+
+.red {
+    background-color: #ff7675;
+    color: #fff;
+}
+.hidelired{
+    display: inline-block;
+    list-style: none;
+    line-height: 30px;
+    width: 80px;
+    font-size: 10px;
+    color: #fff;
+    background-color: #ff7675;
+    border-radius: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.hideli {
+    display: inline-block;
+    list-style: none;
+    line-height: 30px;
+    width: 80px;
+    font-size: 10px;
+    color: #fff;
+    background-color: cornflowerblue;
+    border-radius: 20px;
+    margin: 10px;
+    text-align: center;
+}
+.reload{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background:url('./reload.png')no-repeat;
+    background-size: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 45%;
+}

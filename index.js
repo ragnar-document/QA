@@ -2,8 +2,10 @@ const PAGE = {
     data:{
         questions: questions,
         index: 0,
-        answer: null,
-        sum:[]
+        answer: null, 
+        sum: [], //答案储存 
+        grade: 100, //总分数
+        questionsTotal: 0
     },
     init: function () {
         this.bind();
@@ -53,17 +55,19 @@ const PAGE = {
         let title = questions[index].title;
         let options = questions[index].options;
  
-        let tit = `<div class="title">${title}</div>`
+        let tit = `<div class="title">第${index+1}题:${title}</div>`
         let opt = options.map((data,index) => {
             return `<div class="question" data-index="${index}">${data}</div>`
         }).join('')
         questionsTitle.innerHTML = tit;
         questionsQuestion.innerHTML = opt
         PAGE.data.answer = questions[index].correct;
+        PAGE.data.questionsTotal = questions.length;
     },
     register: function () {
         let truequestion = document.getElementById('truequestion');
         let falsequestion = document.getElementById('falsequestion');
+        let gradeStore = document.getElementById('grade');
         const SUM = PAGE.data.sum;
         let i = SUM.length;
         let one = [];
@@ -80,19 +84,26 @@ const PAGE = {
         truequestion.innerText = one.length;
         falsequestion.innerText = two.length;
         let hideContainer = document.getElementById('hide');
+        let showContainer = document.getElementById('show');
         let tables = document.getElementById('tables');
-        console.log(SUM)
+
         if (SUM.length == questions.length) {
             hideContainer.classList.add('nohide');
+            showContainer.classList.add('noshow');
             let as = SUM.map((data, index) => {
                 return `<li class="${data == 1 ? 'hideli' : 'hidelired'}">第${index + 1}题:${data == 1 ? '正确' : '错误'}</li>`
             }).join('')
-            tables.innerHTML = as
+            tables.innerHTML = as;
+            let grade = PAGE.data.grade;
+            let questionsTotal = PAGE.data.questionsTotal;
+            let total = Math.round(grade / questionsTotal * one.length);
+            let reach = total >= 80 ? '你太棒啦！' : '成绩不达标'
+            gradeStore.innerText = total + reach;
         }  
     },
     nextQuestions: function () {
         let questions = PAGE.data.questions;
-        if (PAGE.data.index == questions.length - 1) {
+        if (PAGE.data.index == questions.length) {
             return
         }
         PAGE.data.sum.push('')
